@@ -1,0 +1,178 @@
+#============================================================
+# Rubik Timer - Pin Assignments for Altera DE2-115
+# Cyclone IV EP4CE115F29C7
+#============================================================
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY rubik_timer_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:00:00 JANUARY 01, 2024"
+set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+
+#============================================================
+# CLOCK
+#============================================================
+set_location_assignment PIN_Y2 -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+
+#============================================================
+# PUSH BUTTONS (KEY[3:0]) - Active Low
+# KEY[0] = left_hand
+# KEY[1] = right_hand  
+# KEY[2] = reset
+# KEY[3] = start_inspection
+#============================================================
+set_location_assignment PIN_M23 -to KEY[0]
+set_location_assignment PIN_M21 -to KEY[1]
+set_location_assignment PIN_N21 -to KEY[2]
+set_location_assignment PIN_R24 -to KEY[3]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[3]
+
+#============================================================
+# SLIDE SWITCHES (SW[0]) - Active High
+# SW[0] = power
+#============================================================
+set_location_assignment PIN_AB28 -to SW[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[0]
+
+#============================================================
+# 7-SEGMENT DISPLAYS (Common Cathode, Active Low)
+# Display mapping: MM:SS.mmm
+# HEX7 = min_tens, HEX6 = min_units
+# HEX5 = sec_tens, HEX4 = sec_units
+# HEX3 = ms_hundreds, HEX2 = ms_tens, HEX1 = ms_units
+# HEX0 = unused (kept off)
+#============================================================
+
+# HEX0 (rightmost - unused)
+set_location_assignment PIN_G18 -to HEX0[0]
+set_location_assignment PIN_F22 -to HEX0[1]
+set_location_assignment PIN_E17 -to HEX0[2]
+set_location_assignment PIN_L26 -to HEX0[3]
+set_location_assignment PIN_L25 -to HEX0[4]
+set_location_assignment PIN_J22 -to HEX0[5]
+set_location_assignment PIN_H22 -to HEX0[6]
+
+# HEX1 (ms_units)
+set_location_assignment PIN_M24 -to HEX1[0]
+set_location_assignment PIN_Y22 -to HEX1[1]
+set_location_assignment PIN_W21 -to HEX1[2]
+set_location_assignment PIN_W22 -to HEX1[3]
+set_location_assignment PIN_W25 -to HEX1[4]
+set_location_assignment PIN_U23 -to HEX1[5]
+set_location_assignment PIN_U24 -to HEX1[6]
+
+# HEX2 (ms_tens)
+set_location_assignment PIN_AA25 -to HEX2[0]
+set_location_assignment PIN_AA26 -to HEX2[1]
+set_location_assignment PIN_Y25 -to HEX2[2]
+set_location_assignment PIN_W26 -to HEX2[3]
+set_location_assignment PIN_Y26 -to HEX2[4]
+set_location_assignment PIN_W27 -to HEX2[5]
+set_location_assignment PIN_W28 -to HEX2[6]
+
+# HEX3 (ms_hundreds)
+set_location_assignment PIN_V21 -to HEX3[0]
+set_location_assignment PIN_U21 -to HEX3[1]
+set_location_assignment PIN_AB20 -to HEX3[2]
+set_location_assignment PIN_AA21 -to HEX3[3]
+set_location_assignment PIN_AD24 -to HEX3[4]
+set_location_assignment PIN_AF23 -to HEX3[5]
+set_location_assignment PIN_Y19 -to HEX3[6]
+
+# HEX4 (sec_units)
+set_location_assignment PIN_AB19 -to HEX4[0]
+set_location_assignment PIN_AA19 -to HEX4[1]
+set_location_assignment PIN_AG21 -to HEX4[2]
+set_location_assignment PIN_AH21 -to HEX4[3]
+set_location_assignment PIN_AE19 -to HEX4[4]
+set_location_assignment PIN_AF19 -to HEX4[5]
+set_location_assignment PIN_AE18 -to HEX4[6]
+
+# HEX5 (sec_tens)
+set_location_assignment PIN_AD18 -to HEX5[0]
+set_location_assignment PIN_AC18 -to HEX5[1]
+set_location_assignment PIN_AB18 -to HEX5[2]
+set_location_assignment PIN_AH19 -to HEX5[3]
+set_location_assignment PIN_AG19 -to HEX5[4]
+set_location_assignment PIN_AF18 -to HEX5[5]
+set_location_assignment PIN_AH18 -to HEX5[6]
+
+# HEX6 (min_units)
+set_location_assignment PIN_AA17 -to HEX6[0]
+set_location_assignment PIN_AB16 -to HEX6[1]
+set_location_assignment PIN_AA16 -to HEX6[2]
+set_location_assignment PIN_AB17 -to HEX6[3]
+set_location_assignment PIN_AB15 -to HEX6[4]
+set_location_assignment PIN_AA15 -to HEX6[5]
+set_location_assignment PIN_AC17 -to HEX6[6]
+
+# HEX7 (min_tens - leftmost)
+set_location_assignment PIN_AD17 -to HEX7[0]
+set_location_assignment PIN_AE17 -to HEX7[1]
+set_location_assignment PIN_AG17 -to HEX7[2]
+set_location_assignment PIN_AH17 -to HEX7[3]
+set_location_assignment PIN_AF17 -to HEX7[4]
+set_location_assignment PIN_AG18 -to HEX7[5]
+set_location_assignment PIN_AA14 -to HEX7[6]
+
+# 7-segment IO standard
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX0[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX1[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX2[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX3[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX4[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX5[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX6[*]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to HEX7[*]
+
+#============================================================
+# RED LEDs (LEDR) - State indicators
+# LEDR[2:0] = state_out (3-bit state encoding)
+#============================================================
+set_location_assignment PIN_G19 -to LEDR[0]
+set_location_assignment PIN_F19 -to LEDR[1]
+set_location_assignment PIN_E19 -to LEDR[2]
+
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDR[2]
+
+#============================================================
+# GREEN LEDs (LEDG) - Hands detected indicator
+# LEDG[0] = led_hands
+#============================================================
+set_location_assignment PIN_E21 -to LEDG[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to LEDG[0]
+
+#============================================================
+# TIMING CONSTRAINTS
+#============================================================
+set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name PHYSICAL_SYNTHESIS_COMBO_LOGIC ON
+set_global_assignment -name PHYSICAL_SYNTHESIS_REGISTER_RETIMING ON
+
+# Clock constraint (50 MHz)
+create_clock -period 20.000 -name CLOCK_50 [get_ports {CLOCK_50}]
+
+#============================================================
+# NOTES
+#============================================================
+# - KEY buttons are active LOW (0 = pressed)
+# - 7-segment displays are common cathode (0 = segment ON)
+# - SW[0] is active HIGH (1 = power ON)
+# - LEDR/LEDG are active HIGH (1 = LED ON)
+# 
+# State encoding on LEDR[2:0]:
+#   000 = OFF
+#   001 = IDLE_DOWN
+#   010 = COUNTDOWN
+#   011 = WAITING
+#   100 = RUN
+#   101 = PAUSED
+#============================================================
